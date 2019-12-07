@@ -26,12 +26,14 @@ spec:
               initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
               periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
               successThreshold: {{ .Values.livenessProbe.successThreshold }}
+              failureThreshold: 12
               timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             readinessProbe:
               httpGet:
                 path: {{ .Values.probePath }}
               periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
               successThreshold: {{ .Values.readinessProbe.successThreshold }}
+              failureThreshold: 12
               timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             resources:
 {{ toYaml .Values.resources | indent 14 }}
